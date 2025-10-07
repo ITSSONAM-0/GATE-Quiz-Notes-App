@@ -1,24 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Quiz App using JavaScript</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GATE Quiz & Notes App</title>
+<link rel="stylesheet" href="style.css">
+
+
+<!-- SweetAlert2 (for welcome popup) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- particles.js CDN for background particles -->
+<script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.js"></script>
 </head>
 <body>
-    <div class="alert">Alert</div>
-    <div class="btn startBtn">Start</div>
-    <div class="container">-
-        <h1>Let's play a Quiz Game</h1>
-        <div class="question"></div>
-        <div class="choices"></div>
-        <button class="btn nextBtn">Next</button>
-        <div class="scoreCard"></div>
-        <div class="timer"></div>
-    </div>
+<!-- Particle background container -->
+<div id="particles-js"></div>
 
-    <script src="script.js"></script>
+<header class="topbar">
+<h1 id="appTitle">GATE Quiz & Notes App</h1>
+<div class="top-controls">
+<button id="themeToggle" title="Toggle theme">🌙</button>
+<button id="welcomeBtn" title="Welcome">👋</button>
+</div>
+</header>
+
+
+<main>
+<section class="landing">
+<p class="subtitle">Choose a subject to begin — includes notes & quiz</p>
+<div class="subject-buttons" aria-label="Subjects">
+<button class="subjectBtn" data-subject="EM">EM</button>
+<button class="subjectBtn" data-subject="DL">DL</button>
+<button class="subjectBtn" data-subject="COA">COA</button>
+<button class="subjectBtn" data-subject="DS">DS</button>
+<button class="subjectBtn" data-subject="ALGO">ALGO</button>
+<button class="subjectBtn" data-subject="TOC">TOC</button>
+<button class="subjectBtn" data-subject="CD">CD</button>
+<button class="subjectBtn" data-subject="OS">OS</button>
+<button class="subjectBtn" data-subject="DBMS">DBMS</button>
+<button class="subjectBtn" data-subject="CN">CN</button>
+<button class="subjectBtn" data-subject="SE">SE</button>
+</div>
+</section>
+
+
+<!-- Quiz Card -->
+<section class="container" id="quizContainer" aria-hidden="true">
+<div class="card">
+<div class="card-header">
+<h2 id="subjectTitle">Quiz</h2>
+<div class="progress-bar" aria-hidden="true"><div id="progress" class="progress-bar-inner"></div></div>
+</div>
+
+
+<div class="card-body">
+<div class="question" role="heading" aria-level="2"></div>
+<div class="choices" role="list"></div>
+</div>
+
+
+<div class="card-footer">
+<div class="navigation">
+<button class="prevBtn">Previous</button>
+<button class="nextBtn">Next</button>
+</div>
+<div class="timer" aria-live="polite"></div>
+</div>
+</div>
+</section>
+
+
+<div class="scoreCard" id="scoreCard" aria-live="polite"></div>
+
+
+<section class="leaderboard" aria-label="Leaderboard">
+<h3>Leaderboard (Top 5)</h3>
+<ul id="leaderboardList"></ul>
+</section>
+
+
+<section class="notes-container" id="notesBox" aria-hidden="true">
+<div class="notes-controls">
+<button id="toggleNotes">Show/Hide Notes</button>
+<a id="downloadPDF" href="#" download>Download PDF</a>
+</div>
+<iframe id="pdfFrame" title="Notes PDF viewer"></iframe>
+</section>
+
+
+</main>
+
+
+<div id="alert-root"></div>
+
+
+<script src="script.js"></script>
 </body>
 </html>
