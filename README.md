@@ -18,7 +18,7 @@
 
 ## Live Demo
 
-Try the app here: [GATE Quiz & Notes App](https://your-live-link.com)
+Try the app here: [GATE Quiz & Notes App](https://itssonam-0.github.io/GATE-Quiz-Notes-App/)
 
 ---
 
