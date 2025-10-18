@@ -1,4 +1,4 @@
-// ---------------- DOM Elements ----------------
+
 const container = document.getElementById('quizContainer');
 const questionBox = document.querySelector('.question');
 const choicesBox = document.querySelector('.choices');
@@ -17,10 +17,10 @@ const appTitle = document.getElementById('appTitle');
 const welcomeBtn = document.getElementById('welcomeBtn');
 const themeToggle = document.getElementById('themeToggle');
 
-// ---------------- Variables ----------------
+
 let quiz = [], currentQuestionIndex = 0, userAnswers = [], score = 0, timerID = null, timeLeft = 15, currentSubject = "";
 
-// ---------------- Quiz Data ----------------
+
 const quizData = {
   EM:[{question:"Derivative of x^2?",choices:["2x","x^2","x","1"],answer:"2x"},{question:"Integral of 1/x?",choices:["ln x","1/x","x","e^x"],answer:"ln x"}],
   DL:[{question:"Logic gate with AND behavior?",choices:["OR","AND","XOR","NOT"],answer:"AND"},{question:"NOT gate symbol?",choices:["Triangle","Circle","Inverter","Square"],answer:"Inverter"}],
@@ -35,13 +35,13 @@ const quizData = {
   SE:[{question:"SDLC stands for?",choices:["Software Development Life Cycle","System Development Life Cycle","Software Design Life Cycle","System Design Life Cycle"],answer:"Software Development Life Cycle"}]
 };
 
-// ---------------- Helpers ----------------
+
 function displayAlert(msg, timeout=2000){
   const a = document.createElement('div'); a.className='alert'; a.textContent = msg; document.body.appendChild(a);
   setTimeout(()=> a.remove(), timeout);
 }
 
-// Tiny click sound using WebAudio (no external file)
+
 function playClick(){
   try{
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -52,7 +52,7 @@ function playClick(){
   }catch(e){/*ignore on unsupported*/}
 }
 
-// Theme toggle (simple)
+
 let dark = true;
 function toggleTheme(){
   dark = !dark;
@@ -72,7 +72,7 @@ function showWelcome(){
   });
 }
 
-// ---------------- Notes toggle ----------------
+
 toggleNotesBtn.addEventListener('click', ()=>{
   const visible = notesBox.style.display === 'block';
   notesBox.style.display = visible? 'none':'block';
@@ -84,7 +84,7 @@ function loadNotes(subject){
   downloadPDF.href = pdfPath;
 }
 
-// ---------------- Subject selection & quiz flow ----------------
+
 subjectButtons.forEach(btn=>{
   btn.addEventListener('click', ()=>{
     currentSubject = btn.dataset.subject;
@@ -177,7 +177,7 @@ function updateLeaderboard(){
 }
 updateLeaderboard();
 
-// ---------------- Particles Init ----------------
+
 if(window.particlesJS){
   particlesJS('particles-js', {
     particles: {
@@ -194,7 +194,7 @@ if(window.particlesJS){
   });
 }
 
-// Small welcome popup on first load
+
 window.addEventListener('load', ()=>{
   if(!localStorage.getItem('seenWelcome')){
     showWelcome(); localStorage.setItem('seenWelcome','1');
