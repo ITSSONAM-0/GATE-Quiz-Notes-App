@@ -75,6 +75,7 @@ function toggleTheme(){
   document.body.style.color = dark? '#e6eef6' : '#122034';
 }
 themeToggle.addEventListener('click', toggleTheme);
+console.log("test change");
 
 welcomeBtn.addEventListener('click', ()=> showWelcome());
 function showWelcome(){
