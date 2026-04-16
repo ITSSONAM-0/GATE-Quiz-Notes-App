@@ -3,15 +3,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GATE Quiz & Notes App</title>
-<link rel="stylesheet" href="style.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body class="dark-theme">
 
 
 <div id="particles-js"></div>
@@ -28,7 +29,12 @@
 <main>
 <section class="landing">
 <p class="subtitle">Choose a subject to begin — includes notes & quiz</p>
-<div class="subject-buttons" aria-label="Subjects">
+    <div class="special-modes">
+        <button id="mockTestBtn" class="premiumBtn">🚀 Start Full Mock Test (Mixed Subjects)</button>
+        <button id="flashcardsBtn" class="premiumBtn">⭐ Revision Flashcards</button>
+    </div>
+    <div class="subject-buttons" aria-label="Subjects">
+
 <button class="subjectBtn" data-subject="EM">EM</button>
 <button class="subjectBtn" data-subject="DL">DL</button>
 <button class="subjectBtn" data-subject="COA">COA</button>
@@ -82,9 +88,35 @@
 <section class="notes-container" id="notesBox" aria-hidden="true">
 <div class="notes-controls">
 <button id="toggleNotes">Show/Hide Notes</button>
+<button id="pomodoroBtn">⏱️ Study Timer</button>
 <a id="downloadPDF" href="#" download>Download PDF</a>
 </div>
 <iframe id="pdfFrame" title="Notes PDF viewer"></iframe>
+</section>
+
+<section class="stats-container" id="statsBox">
+    <h3>📈 Performance Analytics</h3>
+    <canvas id="scoreChart"></canvas>
+</section>
+
+<section class="flashcard-overlay" id="flashcardSection" style="display:none;">
+    <div class="flashcard-container">
+        <button class="close-flashcards">×</button>
+        <div class="flashcard" id="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">
+                    <p id="cardFrontText">Question will appear here</p>
+                </div>
+                <div class="flashcard-back">
+                    <p id="cardBackText">Answer will appear here</p>
+                </div>
+            </div>
+        </div>
+        <div class="flashcard-controls">
+            <button id="prevCard">Previous</button>
+            <button id="nextCard">Next</button>
+        </div>
+    </div>
 </section>
 
 
